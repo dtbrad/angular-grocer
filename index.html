@@ -9,6 +9,14 @@
       {{ main.appName }}
     </h1>
 
+    <input ng-model="main.user.name" placeholder="name" />
+    <input ng-model="main.user.email" placeholder="email" />
+    <input ng-model="main.user.password" placeholder="password" />
+    <button ng-click="main.signup()">Click here to sign up</button>
+    <p>
+      JWT is: {{ main.token }}
+    </p>
+
     <script src="js/angular.js"></script>
     <script src="js/app.js"></script>
     <script src="js/MainController.js"></script>
