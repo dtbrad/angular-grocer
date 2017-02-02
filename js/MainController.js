@@ -16,6 +16,21 @@ function MainController($http) {
       });
   };
 
+  ctrl.getProducts = function () {
+      token = window.localStorage.jwt
+      $http({
+              method: 'GET',
+              url: 'http://localhost:3000/products',
+              headers: {
+                'Authorization': token
+              }
+            })
+      .then(function successCallback(response) {
+        if (response.data.error) { alert(response.data.error.message) }
+        else ctrl.products = response.data
+      });
+    };
+
 }
 
 angular
