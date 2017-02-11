@@ -1,26 +1,32 @@
 <html ng-app="app">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Angular Grocer</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+
   </head>
-  <body ng-controller="MainController as main">
+  <body class="container" ng-controller="MainController as main">
 
     <h1>
       {{ main.appName }}
     </h1>
 
-    <input ng-model="main.user.name" placeholder="name" />
-    <input ng-model="main.user.email" placeholder="email" />
-    <input ng-model="main.user.password" placeholder="password" />
-    <button ng-show="!main.token" ng-click="main.signup()">Click here to sign up</button>
-    <button ng-show="!main.token" ng-click="main.login()">Click here to log in</button>
-    <button ng-hide="!main.token" ng-click="main.logout()">Click here to log out</button>
+    <ul ng-repeat="mes in main.message">
+      <li>
+        {{ mes }}
+      </li>
+    </ul>
 
-    <p>
-      JWT is: {{ main.token }}
-    </p>
+    <input ng-model="main.user.name" placeholder="name" class="form-control" />
+    <input ng-model="main.user.email" placeholder="email" class="form-control" />
+    <input ng-model="main.user.password" placeholder="password" class="form-control" />
+    <button ng-show="!main.token" ng-click="main.signup()" class="btn btn-primary">Click here to sign up</button>
+    <button ng-show="!main.token" ng-click="main.login()" class="btn btn-primary">Click here to log in</button>
+    <button ng-hide="!main.token" ng-click="main.logout()" class="btn btn-primary">Click here to log out</button>
 
-    <button ng-click="main.getProducts()">Click here retrieve product array</button>
+
+
+    <button ng-click="main.getProducts()" class="btn btn-primary">Click here retrieve product array</button>
 
     <ul ng-repeat="item in main.products">
       <li>
@@ -28,8 +34,8 @@
       </li>
     </ul>
 
-    <script src="js/angular.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/MainController.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="app.js"></script>
+    <script src="MainController.js"></script>
   </body>
 </html>
