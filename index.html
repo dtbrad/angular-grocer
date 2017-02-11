@@ -5,37 +5,16 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
 
   </head>
-  <body class="container" ng-controller="MainController as main">
-
-    <h1>
-      {{ main.appName }}
-    </h1>
-
-    <ul ng-repeat="mes in main.message">
-      <li>
-        {{ mes }}
-      </li>
-    </ul>
-
-    <input ng-model="main.user.name" placeholder="name" class="form-control" />
-    <input ng-model="main.user.email" placeholder="email" class="form-control" />
-    <input ng-model="main.user.password" placeholder="password" class="form-control" />
-    <button ng-show="!main.token" ng-click="main.signup()" class="btn btn-primary">Click here to sign up</button>
-    <button ng-show="!main.token" ng-click="main.login()" class="btn btn-primary">Click here to log in</button>
-    <button ng-hide="!main.token" ng-click="main.logout()" class="btn btn-primary">Click here to log out</button>
-
-
-
-    <button ng-click="main.getProducts()" class="btn btn-primary">Click here retrieve product array</button>
-
-    <ul ng-repeat="item in main.products">
-      <li>
-        {{ item.name }}
-      </li>
-    </ul>
+  <body class="container" ng-controller="HomeController as Home">
+    <ui-view></ui-view>
 
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="app.js"></script>
-    <script src="MainController.js"></script>
+    <script src="app/controllers/HomeController.js"></script>
+    <script src="app/controllers/SessionController.js"></script>
+    <script src="app/services/userService.js"></script>
+    <script src="app/services/authService.js"></script>
+    <script src="app/services/authInterceptor.js"></script>
   </body>
 </html>
