@@ -16,8 +16,8 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#" ui-sref="home.products" ui-sref-active="active">Products List <span class="sr-only">(current)</span></a></li>
-          <li><a ng-hide="home.token()" href="#" ui-sref="home.login" ui-sref-active="active">login <span class="sr-only">(current)</span></a></li>
-          <li><a ng-show="home.token()" class="fake-link" ng-click="home.logout()">Logout <span class="sr-only">(current)</span></a></li>
+          <li><a ng-hide="home.isAuthed()" href="#" ui-sref="home.login" ui-sref-active="active">login <span class="sr-only">(current)</span></a></li>
+          <li><a ng-show="home.isAuthed()" class="fake-link" ng-click="home.logout()">Logout <span class="sr-only">(current)</span></a></li>
         </ul>
       </div>
   </div>

@@ -15,6 +15,10 @@ function authService($window) {
     return $window.localStorage['jwtToken'];
   };
 
+  ctrl.logout = function () {
+    $window.localStorage.removeItem('jwtToken');
+  };
+
 
   ctrl.isAuthed = function () {
     var token = ctrl.getToken();

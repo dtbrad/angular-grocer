@@ -1,1 +1,7 @@
-<h4> Products View </h4>
+<div ng-show="prod.isAuthed()">
+  <ul ng-repeat="product in prod.products">
+    <li>
+      {{product.name}}
+    </li>
+  </ul>
+</div>

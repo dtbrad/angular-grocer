@@ -21,7 +21,13 @@ angular
       })
       .state('home.products', {
         url: 'products',
-        templateUrl: 'app/views/products.html'
+        controller: 'ProductsController as prod',
+        templateUrl: 'app/views/products.html',
+        resolve: {
+          products: function(productsService){
+            return productsService.getProducts();
+          }
+        }
       })
       $urlRouterProvider.otherwise('products');
   });
