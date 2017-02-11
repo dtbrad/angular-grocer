@@ -1,7 +1,40 @@
-<div ng-show="prod.isAuthed()">
-  <ul ng-repeat="product in prod.products">
-    <li>
-      {{product.name}}
-    </li>
-  </ul>
+
+<div ng-show="prod.isAuthed()" class="panel panel-default">
+  <div class="panel-heading">
+    <h5>You have purchased the following products</h5>
+  </div>
+  <div class="panel-body">
+    <div class="panel-body">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Total Purchased</th>
+            <th>Highest Price</th>
+            <th>Lowest Price</th>
+            <th>Most Recently Purchased</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="product in prod.products">
+          <td>
+            {{ product.name }}
+          </td>
+          <td>
+            {{ product.total_purchased }}
+          </td>
+          <td>
+            {{ product.highest_price / 100 | currency}}
+          </td>
+          <td>
+            {{ product.lowest_price / 100 | currency}}
+          </td>
+          <td>
+            {{ product.most_recently_purchased | date:'short'}}
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
