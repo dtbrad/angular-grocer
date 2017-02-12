@@ -4,6 +4,10 @@ function productsService($http, API) {
     return $http.get(API+'/products')
   };
 
+  this.getProduct = function(id) {
+  return $http.get(API+'/products/' + id);
+}
+
 }
 
 angular.module('app')

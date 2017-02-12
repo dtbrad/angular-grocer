@@ -1,0 +1,35 @@
+<div ng-show="prod.isAuthed()" class="panel panel-default">
+
+  <div class="panel-heading">
+    <h5> {{ prod.product.name }}</h5>
+  </div>
+
+  <div class="panel-body">
+    <div class="panel-body">
+
+      <table class= "table">
+        <thead>
+          <tr class="fake-link">
+            <th> Date Purchased </th>
+            <th> Price </th>
+            <th> Qty Purchased </th>
+            <th> Weight </th>
+            <th> Total Price </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="li in prod.product.line_items">
+            <td> {{li.basket_date | date: 'short'}} </td>
+            <td> {{ li.price_cents / 100 | currency }} </td>
+            <td> {{ li.quantity }} </td>
+            <td> {{ li.weight }} </td>
+            <td> {{ li.total_cents / 100 | currency }} </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+</div>
+<h5 ng-hide="prod.isAuthed()">You need to be logged in to see this page</h5>

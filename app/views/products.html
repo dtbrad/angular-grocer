@@ -18,7 +18,9 @@
         <tbody>
           <tr ng-repeat="product in prod.products">
           <td>
-            {{ product.name }}
+            <a ui-sref="home.product({id: product.id})">
+              {{ product.name }}
+            </a>
           </td>
           <td>
             {{ product.total_purchased }}
@@ -38,3 +40,5 @@
     </div>
   </div>
 </div>
+
+<h5 ng-hide="prod.isAuthed()">You need to be logged in to see this page</h5>

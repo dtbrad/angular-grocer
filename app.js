@@ -29,5 +29,15 @@ angular
           }
         }
       })
+      .state('home.product', {
+      url:'products/:id',
+      controller: 'ProductController as prod',
+      templateUrl: 'app/views/product.html',
+      resolve: {
+        product: function($stateParams, productsService){
+          return productsService.getProduct($stateParams.id)
+        },
+      }
+    })
       $urlRouterProvider.otherwise('products');
   });
