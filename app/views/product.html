@@ -10,16 +10,46 @@
       <table class= "table">
         <thead>
           <tr class="fake-link">
-            <th> Date Purchased </th>
-            <th> Price </th>
-            <th> Qty Purchased </th>
-            <th> Weight </th>
-            <th> Total Price </th>
+            <th>
+              <a class="fake-link" ng-click="prod.sortColumn = 'basket_date'; prod.sortReverse = !prod.sortReverse">
+                Date Purchased
+                <span ng-show="prod.sortColumn == 'basket_date' && !prod.sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="prod.sortColumn == 'basket_date' && prod.sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </th>
+            <th>
+              <a class="fake-link" ng-click="prod.sortColumn = 'price_cents'; prod.sortReverse = !prod.sortReverse">
+                Price
+                <span ng-show="prod.sortColumn == 'price_cents' && !prod.sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="prod.sortColumn == 'price_cents' && prod.sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </th>
+            <th>
+              <a class="fake-link" ng-click="prod.sortColumn = 'quantity'; prod.sortReverse = !prod.sortReverse">
+                Quantity Purchased
+                <span ng-show="prod.sortColumn == 'quantity' && !prod.sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="prod.sortColumn == 'quantity' && prod.sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </th>
+            <th>
+              <a class="fake-link" ng-click="prod.sortColumn = 'weight'; prod.sortReverse = !prod.sortReverse">
+                Weight
+                <span ng-show="prod.sortColumn == 'weight' && !prod.sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="prod.sortColumn == 'weight' && prod.sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </th>
+            <th>
+              <a class="fake-link" ng-click="prod.sortColumn = 'total_cents'; prod.sortReverse = !prod.sortReverse">
+                Total
+                <span ng-show="prod.sortColumn == 'total_cents' && !prod.sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="prod.sortColumn == 'total_cents' && prod.sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </th>
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="li in prod.product.line_items">
-            <td> {{li.basket_date | date: 'short'}} </td>
+          <tr dir-paginate="li in prod.product.line_items | orderBy:prod.sortColumn:prod.sortReverse | itemsPerPage: 10" {{ item }}>
+            <td> {{ li.basket_date | date: 'short'}} </td>
             <td> {{ li.price_cents / 100 | currency }} </td>
             <td> {{ li.quantity }} </td>
             <td> {{ li.weight }} </td>
@@ -27,6 +57,9 @@
           </tr>
         </tbody>
       </table>
+      <div class="text-center">
+        <dir-pagination-controls></dir-pagination-controls>
+      </div>
 
     </div>
   </div>

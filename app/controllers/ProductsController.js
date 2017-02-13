@@ -6,6 +6,9 @@ function ProductsController(products, authService) {
     return authService.isAuthed ? authService.isAuthed() : false
   };
 
+  this.sortColumn = 'name';
+  this.sortReverse = false;
+
 }
 
 angular

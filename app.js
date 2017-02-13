@@ -1,5 +1,5 @@
 angular
-  .module('app', ['ui.router'])
+  .module('app', ['ui.router', 'angularUtils.directives.dirPagination'])
   .constant('API', 'http://localhost:3000')
   .config(function($httpProvider) {
     $httpProvider.interceptors.push('authInterceptor');

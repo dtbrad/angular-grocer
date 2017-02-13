@@ -8,15 +8,45 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Total Purchased</th>
-            <th>Highest Price</th>
-            <th>Lowest Price</th>
-            <th>Most Recently Purchased</th>
+            <th>
+              <a class="fake-link" ng-click="prod.sortColumn = 'name'; prod.sortReverse = !prod.sortReverse">
+                Name
+                <span ng-show="prod.sortColumn == 'name' && !prod.sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="prod.sortColumn == 'name' && prod.sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </th>
+            <th>
+              <a class="fake-link" ng-click="prod.sortColumn = 'total_purchased'; prod.sortReverse = !prod.sortReverse">
+                Total Purchased
+                <span ng-show="prod.sortColumn == 'total_purchased' && !prod.sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="prod.sortColumn == 'total_purchased' && prod.sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </th>
+            <th>
+              <a class="fake-link" ng-click="prod.sortColumn = 'highest_price'; prod.sortReverse = !prod.sortReverse">
+                Highest Price
+                <span ng-show="prod.sortColumn == 'highest_price' && !prod.sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="prod.sortColumn == 'highest_price' && prod.sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </th>
+            <th>
+              <a class="fake-link" ng-click="prod.sortColumn = 'lowest_price'; prod.sortReverse = !prod.sortReverse">
+                Lowest Price
+                <span ng-show="prod.sortColumn == 'lowest_price' && !prod.sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="prod.sortColumn == 'lowest_price' && prod.sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </th>
+            <th>
+              <a class="fake-link" ng-click="prod.sortColumn = 'most_recently_purchased'; prod.sortReverse = !prod.sortReverse">
+                Most Recently Purchased
+                <span ng-show="prod.sortColumn == 'most_recently_purchased' && !prod.sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="prod.sortColumn == 'most_recently_purchased' && prod.sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </th>
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="product in prod.products">
+          <tr dir-paginate="product in prod.products | orderBy:prod.sortColumn:prod.sortReverse | itemsPerPage: 10" {{ item }}>
           <td>
             <a ui-sref="home.product({id: product.id})">
               {{ product.name }}
@@ -37,6 +67,10 @@
         </tr>
         </tbody>
       </table>
+      <div class="text-center">
+        <dir-pagination-controls></dir-pagination-controls>
+      </div>
+
     </div>
   </div>
 </div>
