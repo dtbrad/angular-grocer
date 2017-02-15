@@ -1,4 +1,3 @@
-
 <div ng-show="prod.isAuthed()" class="panel panel-default">
   <div class="panel-heading">
     <h5>You have purchased the following products</h5>
@@ -75,4 +74,4 @@
   </div>
 </div>
 
-<h5 ng-hide="prod.isAuthed()">You need to be logged in to see this page</h5>
+<h5 ng-show="!prod.isAuthed()">You need to be logged in to see this page</h5>

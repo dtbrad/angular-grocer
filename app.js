@@ -39,5 +39,5 @@ angular
         },
       }
     })
-      $urlRouterProvider.otherwise('products');
+      $urlRouterProvider.otherwise('login');
   });

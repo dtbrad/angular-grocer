@@ -1,4 +1,4 @@
-function HomeController(authService) {
+function HomeController($state, $stateParams, authService) {
 
   var home = this
 
@@ -8,6 +8,7 @@ function HomeController(authService) {
 
   home.logout = function () {
     authService.logout();
+    $state.go('home.login');
   };
 
 }

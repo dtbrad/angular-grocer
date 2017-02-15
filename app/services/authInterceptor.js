@@ -10,8 +10,8 @@ function authInterceptor(API, authService) {
     },
 
     response: function(res) {
-      if((res.config.url.indexOf(API) === 0) && (res.data.jwt)) {
-        authService.saveToken(res.data.jwt);
+      if((res.config.url.indexOf(API) === 0) && (res.headers("jwt"))) {
+        authService.saveToken(res.headers("jwt"));
       }
       return res;
     },
