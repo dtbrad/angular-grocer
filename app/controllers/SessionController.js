@@ -12,7 +12,7 @@ function SessionController($state, $stateParams, userService, authService) {
     response.data.message.forEach(function(mes){ctrl.message.push(mes)});
     if (authService.isAuthed())
     {
-      $state.go('home.products');
+      $state.go('home.products', { perPage: 10, currentPage: 1 }  );
     }
   }
 

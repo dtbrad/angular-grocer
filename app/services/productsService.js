@@ -1,7 +1,10 @@
 function productsService($http, API) {
 
-  this.getProducts = function() {
-    return $http.get(API+'/products')
+  this.getProducts = function(perPage, currentPage) {
+    perPage = perPage || 10
+    currentPage = currentPage || 1
+    var url = API+'/products?per_page=' + perPage + '&page=' + currentPage
+    return $http.get(url)
   };
 
   this.getProduct = function(id) {

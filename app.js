@@ -23,9 +23,12 @@ angular
         url: 'products',
         controller: 'ProductsController as prod',
         templateUrl: 'app/views/products.html',
+        params: {
+            perPage: null, currentPage: null
+        },
         resolve: {
-          products: function(productsService){
-            return productsService.getProducts();
+          products: function(productsService, $stateParams){
+            return productsService.getProducts($stateParams.perPage, $stateParams.currentPage);
           }
         }
       })
